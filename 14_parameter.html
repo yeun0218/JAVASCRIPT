@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAremeter </title>
+    <script>
+        /*  Defalut Value  */
+        /*function sum(a, b, c){
+            return a + b + c;}
+        console.log(sum(1, 2, 3)); //매개변수 갯수 = 실인자 갯수
+        //6 */
+
+        function sum(a, b=2, c=3){
+            return a + b + c;
+        }
+    
+        console.log(sum(1, 2, 3));
+        console.log(sum(1, 2)); //c=3 했을때
+        console.log(sum(1)); // b=2, c=3 했을때
+        //default  줄때는 뒤에서부터 채워서 (a=1, b, c=3) 으로 쓸 수 없어
+        console.log("-------------------") ;
+
+        /*  객체의 Destructuring Assingment  */
+        // 구조를 분해해서 할당
+        const user = {name : "홍길동", age : 30}; //<-JSON형식
+        //name, age = '키'라고 불러 키는 변하지 않는 유일한  
+
+        /*function getName(u){
+            return u.name;
+                // 내가 필요한 데이터를 파싱하는 
+                // '.'은 메모리에 접근하겠다는 뜻 (접근연산자)
+
+            //const {name} = u;//통째로 주어진 객체에서 하나만 분해해서 가져오겠다.
+                // u는 데이터 전체를 의미 그 중에서 name만 가져오겠다 
+            //return name;
+        } 
+        */
+        function getName({name}){
+            return name;
+        }
+
+        function getEmail(u){
+            let email = user.email;
+            return u.email;
+        }
+
+        function getEmail({email="이메일이 없습니다."}){
+            return email;
+        }
+
+        /*function getEmail(user){
+            let email = user.email;
+            if(email ==null || email==undefined){
+                return "이메일이 없습니다."
+            }
+            else{
+                return email;
+            }
+        }*/
+
+        console.log(getName(user));
+        //참조형은 하나의 데이터가 아니기 때문에 값을 직접 가지고 다니는게 아니라 주소를 사용 (데이터를 저장하는게 아니라 주소만저장)
+        console.log(getEmail(user));
+        console.log("-------------------") ;
+
+        /*  배열의 Destructuring Assingment  */
+        const fruit = ['Apple', 'Banana', 'Cherry'];
+        //키와 값을 묶은게 아니라 값만 묶은거기때문에 값에 대한 것을 지정해줘야해
+        const nums = [1, 2, 3, 4, 5, 6, 7, 8];
+
+        /*function getSecondItem(f){
+            let item = fruit[1];
+            return item;
+        }*/
+       /*
+        function getSecondItem([a, b, c]){ 
+          return b; //어쩌피 두번째꺼 추출하려면 맨처음이랑 마지막 값 써 줄 필요 없으니까
+        }
+        */
+        function getSecondItem([,b]){ //두번째 값이니까 뒷부분은 굳이 안써줘도 돼
+            return b;
+        }
+
+        console.log(getSecondItem(fruit)); 
+        console.log(getSecondItem(nums));
+        console.log("-------------------") ; 
+        
+        /*   rest 매개변수  */
+
+        /*
+        function sum(...rest) { //매개변수의 갯수를 알수가 없다 몇개가 되든 rest라는 변수로 받아주겠다.
+            console.log(rest);
+        }
+        */
+        function sum(a, b, ...rest){ // 두개까지는 무조건 전달하는 게 정해져있을 때 
+             //let hap = a + b + 반복문
+        
+            console.log(rest);
+        }
+
+        sum(1, 2);
+        sum(1, 2, 3, 4);
+        sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        //넘어가는 실인자의 갯수를 정할 수 없을때
+
+        /* callback 함수 적용  */
+        function hap (...rest){
+            console.log(rest)
+        }
+
+        function call() {
+            for (let call=0; cnt<hap.length; cnt++){
+                call += call
+            }
+        }
+        hap(call)
+        hap(1, 2);
+        hap(1, 2, 3, 4);
+        hap(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

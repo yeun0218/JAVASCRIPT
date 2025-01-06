@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스_변수</title>
+    <script>
+        //변수 : 데이터 저장, 함수: 데이터 처리
+        const Book = function(title, author) { //한 덩어리로 제목+작가 함께 저장되게
+            this.title = title;//this를 이용해서 변수 만들어
+            this.author = author;
+            //this = abc 라고 다른 값 넣을 수 없어 
+        }
+        let b1 = new Book("노인과 바다", "헤밍웨이"); //객체(인스턴스) 생성(메모리에 TITLE,author의 크기만큼 공간 생겨)
+        //매개변수만큼 변수 있어야해
+        //b1 : 해당 객체를 지정할 변수 선언(주소를 저장하는)
+        console.log(b1.title, b1.author);
+        
+        let b2 = new Book("홍길동전", "허균");
+        console.log(b2.title, b2.author); 
+        
+        //객체를 만들면 주소(메모리공간)가 생긴다
+        //어떤 주소를 사용중인지 확인하기 위해 사용하는 참조변수 this
+        /*
+        //this는 주소를 나타내는 거기 때문에 100번지에 저장한다고 가정하면 
+        const Book = function(this, title, author) { 
+            this.title = title;//this를 이용해서 변수 만들어
+            this.author = author;
+        }
+        let b1 = new Book(100, "노인과 바다", "헤밍웨이");
+        */
+
+        //밑에 두개는 또 사용할때마다 매번 작성해줘야돼 
+        //설계도 없이 바로 객체를 생성해서 사용하는 즉흥적으로 
+        let b3 = {title: "장발장" , author : "빅토르 위고"};
+        console.log(b3.title, b3.author);
+
+        let b4 = new Object();
+        b4.title = "난중일기"
+        b4.author = "이순신";
+        console.log(b4.title, b4.author);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

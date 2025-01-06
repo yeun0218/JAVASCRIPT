@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DateType</title>
+    <script>
+        /* String (문자열) */
+        let str1 = "Hello" ; //반드시 " or ' 로 묶어줘야해 (쌍따옴/홑따옴)
+        let str2 = '1234' ;
+        //let str3 = "Hello" + str2;  변수를 묶어서 데이터 저장할 수 있어
+        //=> 옛날 방식
+        let str3 = `Hello ${str2}`; //` (backtick) 사용 혼따옴표 아니라 물결표시 있는 곳에 있는 문자
+        //=> 요즘방식으로 데이터 묶는 방법 
+        console.log(str1, str2) ;
+        console.log(str3)
+
+        console.log("------------------")
+
+        /* Number */ 
+        let num1 = 100; //쌍,홑따옴표 없이 
+        console.log(num1 + 10); //넘버타입에서 + 는 더하기(합계)
+
+        let num2 = 3.14; //정수와 실수 모두 사용 가능 
+        let num3 = .15; 
+        console.log(num2 + num3); 
+
+        console.log("------------------")
+
+        //데이터가 어떤  타입인지 알려주는
+        /* typeog() */
+        console.log(typeof(str1), typeof(num1));
+        console.log(num1 + str1); // 숫자열이라도 문자열로 흡수되서 함께 표기 가능
+        console.log(typeof(num1 + str1)); //string 타입이라고 표시됌
+
+        let num4; //undefined ( 아직 데이터가 저장되지 않은)
+        console.log(typeof(num4)); 
+        console.log(num1 + num4); //NaN (Not a Number) 아직 처리할 수 없는 데이터
+        console.log(typeof(num1 + num4)); //쓸 수 없는 값이긴 하지만 type은 number로 
+
+        num1 = 0.1 ;
+        num2 = 0.2 ; 
+        console.log(num1 + num2); 
+        /* 정수값은 오차없이 계산 가능 , 실수값은 오차가 나 소숫점 자리 처리해줘야돼*/
+        (num1 + num2).toFixed(2); //소숫점 둘째자리까지 나타내 
+        console.log((num1 + num2).toFixed(2)); 
+        console.log(typeof((num1 + num2).toFixed(2))); //소수점 정리하게 되면 type이 문자열로 변경
+        console.log(typeof(Number((num1 + num2).toFixed(2)))); // data 앞에 바꾸고싶은 타입함수로 묶어줘  like number()
+
+        console.log("------------------")
+
+        /* Boolean */ //참인지 거짓인지 결정하게 해주는 
+        let b1 = true; //( C 언어에서는 1으로 표기)
+        let b2 = false;  //(0)
+        console.log(b1, b2);
+
+        console.log("------------------")
+
+        /* Undefined  */  //(아직 사용할 수 없는) 값이 비어있다
+        let und;
+        console.log(und); 
+
+        console.log("------------------")
+
+        /* Null */   // 값이 없다 (나중에 값을 넣기 위해 임시로 사용)
+        let age = null; 
+        console.log(age);
+
+        console.log("------------------")
+
+        /*  Object  */
+        let user1 = new Object(); //우선 껍데기 만드는
+        user1.name = "홍길동"; // user1 } name,age,height (유저 안에 네임,에이지,하이트)
+        user1.age = 20;
+        user1.height = 174; 
+
+        console.log(user1); //한번에
+        console.log(user1.name, user1.age, user1.height); //하나씩 
+        console.log(user1["name"], user1["age"], user1["height"]); //대괄호로 불러 오기 가능
+
+        let userA = {name : "임꺽정", age: 20}; //제이슨방식(콜론으로 값을 묶는)
+        console.log(userA.name, userA.age);
+
+        let userB = {   name: "신돌석", 
+                        age: "22",
+                        friend: userA}; //friend도 참조형 변수 
+                        // userB } name,age,friend(name,age)
+        console.log(userB.name, userB.age);
+        console.log(userB.friend.name); //friend의 name 꺼내오기
+        console.log(userB["friend"].name);
+        console.log(userB["friend"]["name"]);
+
+        console.log("------------------")
+
+        /*   Array   */
+        let fruit = new Array();
+        fruit[0] = "apple"; // [] 로 index 순서 결정
+        fruit[1] = "banana";
+        fruit[2] = "체리";
+        console.log(fruit[0], fruit[1], fruit[2]); 
+
+        let food = new Array("짜장면", "라면", "비빔밥");
+        console.log(food[0], food[1], food[2]);
+
+        food[3] = 1000; //값 추가도 가능 
+        console.log(food);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

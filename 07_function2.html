@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function 함수 2</title>
+    <script>
+        function fnMessage(){
+            window.alert('이것은 alert 입니다.'); //alert:메시지를 보여주기 위한
+            //'이것은 alert 입니다.' -> 인자
+            //.이붙어있는건 소속이 되어있다는 뜻 window라는 객체(복잡한 데이터를 하나로 묶어서 사용할 수 있게)
+            //window라는 객체 안에 소속되어 있는 alert라는 함수를 쓰겠다 
+            // window 객체는 가장 상위 객체라 생략도 가능
+
+            let choice = window.confirm('당신의 선택은?');
+            // comfirm : 사용자에서 무언가를 확인시켜주는, return값이 있기 때문에 변수있어야해
+            // 그래서 let choice 라는 변수 선언
+            // 확인(=yes) , 취소(=no)라는 뜻을 의미(양자선택) 
+            /*console.log(choice); */
+            //확인 누르면 true 취소누르면 false
+
+            if(choice == true){
+                console.log('예를 선택');
+            }
+            else{
+                console.log('아니오를 선택');
+            }
+
+            let name = window.prompt('이름을 입력하세요 : '); //return 값 필요하기때문에 변수 필요
+            console.log(name);
+            }
+
+        function fnEval(){
+            let ex = '50 * 2 + 3'; //문자열로 묶여있어서 유효하지 못한 수식
+            console.log(eval(ex)); //유효하지 않은 코드을 유효하도록
+                // eval : 자바스크립트에서 실행할 수 없는 유효하지 않은 코드를 유효하도록 바꿔주는
+
+                ex='for(let i=0; i<3; i++){console.log(i)}'; 
+                eval(ex) ;
+            }
+
+        function fnParse(){
+            let num1 = '33';
+            let num2 = '22';
+                console.log(num1 + num2);
+                console.log(eval(num1) + eval(num2));
+                console.log(parseInt(num1) + parseInt(num2)); //정수형 숫자 표현
+                //숫자든 문자든 정수형으로 바꿔줘
+                //console.log(eval('33abc') + 5);
+                console.log(parseInt('33abc') + 5);// 숫자가 중간에 있거나 뒤에 있으면 인식못해
+                //반드시 숫자가 왼쪽 앞에 있어야해
+                console.log(parseFloat('3.14ㅀㅈㄱㅎ')+5); //parseFloat : 실수형 숫자 추출 
+            }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="메세지 박스" 
+    onclick="fnMessage();"/><br><br>
+    <!--버튼을 클릭했을때(이벤트 속성) 동작 구현하기
+    on 붙어있으면 이벤트 속성-->
+    <hr/>
+    
+    <input type="button" value="evalution" 
+    onclick="fnEval();"/> <br><br>
+    
+    <hr/>
+    
+    <input type="button" value="변환" 
+    onclick="fnParse();"/> <br><br>
+
+    <hr/>
+    
+</body>
+</html>

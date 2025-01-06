@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event 이벤트 3</title>
+    <script src = "./resource/log.js"></script>
+    <script>
+        window.onload = () => {
+            const child = document.getElementById("child");
+            const parent = document.getElementById("parent");
+            const grand = document.getElementById("grand");
+
+            child.addEventListener("mousedown", (e)=>{
+                log("Child가 선택됐당~")
+                e.stopPropagation(); // 버블링현상 방지 
+            }, {capture:false});
+            //mousedown : 마우스 눌렀을 때 click: 마우스 눌렀다 뗐을때
+            //(, {capture:true/false});
+            // false로 지정하면 캡처링 안하겠다 -> false로 지정해도 세개 한꺼번에 떠
+            // => 이벤트 하고 다시 올라가 부모요소 또 나타나: 버블링 
+
+            parent.addEventListener("mousedown", (e)=>{//e(매개변수) : parent에 대한 정보 받는애
+                log("Parent가 선택됐당~")
+                e.stopPropagation();
+            }, false);
+
+            grand.addEventListener("mousedown", ()=>{
+                log("Grand가 선택됐당~")
+            }, false);
+        }
+    </script>
+</head>
+<body>
+    <!--부모 자식관계 child한테 이벤트 발생했을때 grand, parent거쳐서 내려오다 보니까
+    grand,parent 이벤트도 모두 다 실행돼
+    부모를 거쳐서 이벤트가 실행되는 거 : 캡처링-->
+    <div id="grand">
+        grand의 상단
+        <div id="parent">
+            parent의 상단
+            <div id="child">
+                child
+            </div>
+            parent의 하단
+        </div>
+        grand의 하단
+    </div>
+    <br><br>
+    <div id="debugConsole" style="border:2px solid rosybrown"></div>
+</body>
+</html>

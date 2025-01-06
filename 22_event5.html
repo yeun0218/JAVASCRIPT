@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event 이벤트 5 </title>
+    <script src="./resource/log.js"></script>
+    <script>
+        //자바스크립트가 HTML을 언제 도와주느냐
+        //비슷한 애들끼리 있으면 반복문 돌리는거 생각해야
+        window.onload = () => { // 함수 옆에 () 없으면 콜백함수//페이지가 실행할때 이 함수 호출해줘
+            
+            const childs = document.querySelectorAll(".child"); //배열 변수
+            console.log(childs);
+
+            //각각의 자식들에게 이벤트 달아준거 //
+            /*for(let cnt=0; cnt<childs.length; cnt++){
+                childs[cnt].addEventListener("click", ()=>{
+                    log(childs[cnt].textContent); -> 직관적으로 표현 가능 (기초단계)
+                }, false); 
+            }
+            */
+
+            /*이벤트 정보 넘겨받아서 필요한정보 꺼내오기 */
+            /*
+            for (let cnt = 0; cnt < childs.length; cnt++) {
+                childs[cnt].addEventListener("click", (ev) => {
+                    //console.log(ev);
+                    log(ev.target.textContent); //target이 해당div 가리키고 있어
+                }, false);
+            }*/
+
+            /* for...of 문으로  
+            for(let ch of childs){
+                ch.addEventListener("click", (ev) => {
+                    log(ch.textContent);
+                    //log(ev.target.textContent); //target이 해당div 가리키고 있어
+                }, false);
+            }
+            */
+
+            /* forEach(함수(매개변수))  -> 배열 데이터가 매개변수에 전달되서 배열만큼 함수 반복
+            childs.forEach((param)=>{
+                param.addEventListener("click", (ev)=>{
+                    log(param.textContent);
+                },false);
+            }); //반복문 중에서 가장 배운것같은 
+            */
+
+        //일일히 자식들에게 달아주지말고 부모한테 이벤트 맡겨서 (지금은 이벤트 4번 해준거)
+            const parent = document.querySelector(".parent");//기본값이 false 여서 생략가능
+            parent.addEventListener("click", (ev)=>{
+                //console.log(ev);
+                //log(ev.target.textContent);
+                const ch = ev.target.closest(".child") //많은 자식들중에 가장 가까이 있는 child인 자식만 
+                log(ch.textContent);
+            }, false);
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="child">1</div>
+        <div class="child">2</div>
+        <div class="child">3</div>
+        <div class="child">4</div>
+    </div>
+
+    <br><br>
+    <div id="debugConsole" style="border:2px solid rosybrown"></div>
+</body>
+
+</html>

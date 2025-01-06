@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 2 TEST</title>
+    <script>
+        let cnt = 0;//함수가 증가될때마다 초기화 되는게 아니라 한번만 선언하면 되니까 함수밖에 작성
+        //함수안에 카운터변수를 사용할경우) 카운터 변수의 선언은 함수안에 넣으면 안돼 그러면 증가값이 계속 새로 셋팅
+        function fnAppendItem(){
+            cnt++;
+            
+            //div 태그 생성
+            let newItem = document.createElement("div");
+
+            //<div id="item"></div> //추가되는 모든 값이 id 가 동일해
+            newItem.setAttribute("id", `item${cnt}`);
+
+            //<div id="item">새로 추가된 아이템 +삭제버튼</div> //벡틱사용하면 줄바꿈 가능
+            newItem.innerHTML = `새로 추가된 아이템[${cnt}]  
+                <input type="button" 
+                    value="삭제"
+                    onclick="fnDeleteItem(${cnt})"/>`;
+
+            //#itemList 아래에 #item div 추가 
+            let itemDiv = document.getElementById("itemList");
+            itemDiv.appendChild(newItem); //appendChild 가 가독성면에서 자식으로 들어간다는거 잘 표현해줘 
+            }
+
+            //camel case 표기법 사용//cnt값에 맞는 애 삭제
+            function fnDeleteItem(cnt){ 
+                const item = document.getElementById("item" + cnt); //자기가 자기 자신을 삭제할 수 없어
+
+                if(item !== null) //null값일땐 삭제 안될 수 있게 
+                    item.parentNode.removeChild(item) ;
+            }
+
+            function fn3sImage(){
+                const container = document.querySelector(".container");
+
+                /*
+                const img = document.createElement("img");
+                img.src = "./images/hero2.png";
+                container.innerHTML = "";
+                container.append(img);
+                */
+
+                container.innerHTML = '<img src="./images/hero2.png"/>';
+
+            }
+ 
+    </script>
+</head>
+<body onload ="setTimeout(fn3sImage, 3000)"> <!--타이머기능 시간을 정해놓고 기능을 수행할 수 있게 
+    setTimeout(함수,시간) 시간이 지나면 함수를 호출하겠다.
+    시간 : 1/1000초 
+    콜백함수 : 내가 아닌 시스템이 호출하는 호출해달라고 부탁하는 함수()(X) 함수(O)
+                함수 뒤에 ()괄호 붙이지 않는 -->
+    <input type="button" value="추가" onclick="fnAppendItem()"/>
+    <div id ="itemList">
+    </div>
+
+    <hr />
+
+    <div class ="container">
+        <h2> Image Loading... </h2>
+        3초 후에 이미지가 로드됩니다. 
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event 이벤트 2</title>
+    <script src = "./resource/log.js"></script>
+    <script>
+        //function fnCall1(){
+        //    log("fnCall1 함수가 호출됨");
+        //}
+
+        function fnCall2(){
+            log("fnCall2 함수가 호출됨")
+        }
+       /*
+       <body onload ="fnLoad();">
+       function fnLoad(){
+            const btn1 = document.querySelector("button");//query는 하나만 접근하는거니까 
+            //internal로 이벤트 달아주려고
+            //btn1 이 이벤트 소스
+            btn1.addEventListener("click", fnCall1, false);
+        }
+        */
+
+        window.onload= () =>{ //body태그에 온로드하지말고 window.onload
+            const btn1 = document.querySelector("button");//query는 하나만 접근하는거니까 
+            //internal로 이벤트 달아주려고
+            //btn1 이 이벤트 소스
+            btn1.addEventListener("click", () =>log("fnCall1 함수가 호출됨"), false);
+            //btn1.addEventListener("click", fnCall2, false); //같은 버튼에 여러개의 핸들러 추가할 수 있어
+            //한번 클릭했을때 call1,call2 둘다 같이 나타나
+            //btn1.onclick = fnCall1; //->더 간단하게 표현가능, 하나밖에 안돼(맨 마지막에 호출한)
+            //btn1.removeEventListener("click", fnCall2, false); // 다시 call2 로그 사라짐
+            //const btn2 = document.querySelector("button:nth-of-type(2)");
+
+            //두번째 버튼
+            //btn2.onclick = fnCall2; 
+            //btn2.addEventListener("click", fnCall2, false);
+        
+        //window.onload 는 한 함수안에 다 만들어줘야해 똑같은거 또 만들면 첫번째함수 인식 못해
+
+        const btn2 = document.getElementById("btn2");
+        btn2.addEventListener("click", (e)=>{
+            log(e.target); //정보확인 가능 
+            log(e.id);
+            log(e.type);
+            console.log(e.target);
+            console.log(e.id);
+            console.log(e.type);
+            console.log(e)
+        }, false); 
+
+        btn2.addEventListener("keydown", (e)=>{log(e.key)}, false); //키보드의 어떤 거 눌렀는지(키보드를 눌렀을때)
+        btn2.addEventListener("wheel", (e)=>{console.log(e)}, false);  //버튼위에 마우스 올리고 휠 하면
+
+    }
+    //이벤트 메서드 불러오려면 매개변수 필요
+    //발생한 이벤트 정보 확인 하려고 
+
+    </script>
+</head>
+<body>
+    <button>버튼1</button> <br /><br />
+    <button id="btn2">버튼2</button>
+    <br><br>
+    <div id="debugConsole" style="border:2px solid rosybrown"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event 이벤트 4 </title>
+    <script src = "./resource/log.js">//소스 불러오는 태그 안에는 또 작성할 수 없어</script> 
+    <script>
+        window.onload = () => {
+            const div_parent = document.querySelector(".parent");
+
+            div_parent.addEventListener("wheel", (e)=>{ //원래 가지고 있던 기본 동작을 막아야할때
+                console.log("Wheel이 움직이고 있다~~")
+                e.preventDefault(); //휠 움직여도 스크롤되지 않게 웹브라우저에서는 안되는것처럼 보이게 
+            }, false);
+            
+            //const div_child = document.querySelector(".child");
+            const anchor = document.querySelector("a");
+            anchor.addEventListener("click", (e)=>{ 
+                log("Click~~");
+                e.preventDefault();//기본 기능을 막겠다, 하이퍼링크를 눌러도 이동 안해 
+            }, false);
+        }
+    </script>
+</head>
+<body>
+    <div class="parent" style="height:1000px">
+        <div class="child">
+            <a href="https://www.w3schools.com">페이지 이동</a>
+        </div>
+    </div>
+    
+    <br><br>
+    <div id="debugConsole" style="border:2px solid rosybrown"></div>
+</body>
+</html>

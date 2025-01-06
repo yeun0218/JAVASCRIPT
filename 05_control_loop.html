@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>control_loop반복문</title>
+    <script>
+        /*    while    */
+        //console.log('**********');
+        
+        let cnt = 0;
+        while(cnt < 10){
+            document.write('*');
+            cnt++;
+        }
+        document.write("<hr/>");
+        //카운터 횟수 정해주는거 잊지말아야 돼 (cnt++)
+        //0부터 시작하면 10 1부터시작하면 9 
+
+        //1부터 10까지의 합계 (10까지 반복돌아야해)
+       
+        cnt= 0; //이미 앞에서 선언했기 때문에 초기화라고는 안하고 다시셋팅
+        let sum = 0; //처음선언이기때문에 초기화
+        while(cnt <= 10){
+            sum += cnt; //sum = sum + cnt;
+            cnt++; 
+        }
+        console.log(sum);
+
+
+ 
+        //2^10
+        cnt = 0;
+        sum = 1;
+        while(cnt < 10) {
+            sum = sum * 2; //곱셈일땐 초기값 1로 
+            cnt++;
+        }
+        console.log(sum); 
+
+        console.log("------------------")
+
+        /*   do-while   */
+        cnt = 0;
+        sum = 1;
+        do{
+            sum = sum * 2; //곱셈일땐 초기값 1로 
+            cnt++;
+        }while(cnt < 10); 
+        console.log(sum); 
+
+        console.log("------------------")
+
+        /*    for    */
+
+         for(let cnt=0; cnt<10; cnt++)
+            document.write('*'); 
+        document.write("<hr/>");
+
+        /*
+        cnt = 0;
+        for(; cnt<10; cnt++){ // 초기화를 했다면 ()안에 굳이 작성안해도 돼 ;으로 닫아주기만 하면
+            document.write('*'); 
+        } */
+
+        /*cnt = 0;
+        for(; cnt<10;){ 
+            if(cnt == 10)
+            cnt++ // 별먼저 찍고 카운팅 하고 싶을때  카운팅 원하는 위치에 카운터 넣어주면 돼 
+            document.write('*'); 
+        }*/
+
+        /*cnt=0;
+        for(; ;){ //for안이 비어져 있고 밑에도 따로 조건문 없으면 무한반복
+            if(cnt == 10){//조건문도 원하는 위치에 넣을 수 있어 
+                break; //카운터가 10과 같으면 끝난다.
+            }
+            cnt++ 
+            document.write('*'); 
+        } */
+    
+        //-----------------------
+        //1~10합계
+        for(cnt=0,  sum=0; cnt<=10; cnt++){
+            sum += cnt;
+        }
+        
+        //반복문 강제 중지   
+        for(cnt = 0; cnt<10; cnt++){
+            if(cnt ==5 ){
+                break; 
+            }
+            console.log(cnt);
+        }
+    console.log("------------------")
+
+        //반복문 일시중지
+        for(cnt = 0; cnt<10; cnt++){ //5값만 사라져
+            if(cnt ==5 ){
+                continue; 
+            }
+            console.log(cnt);
+        }
+        
+
+        /*  중첩  */
+
+        /* 한 방향이 아니라 양방향으로 반복이 돌 때 x축(행) y축(열)
+        행이 한번 반복될 때 열이 얼만큼 반복되느냐
+            **********
+            **********
+            **********
+        */
+
+        for(let row=0; row<3; row++){ //row 0으로 시작 조건 참이면 밑으로 내려와
+            for(let col=0; col<10; col++){// 두번째 for문 시작 col0으로 시작 
+                document.write("*")
+            }
+            document.write("<br>");//document.write사용하면 html 태그로 사용할 수 있어
+        }
+
+        /*
+        *
+        **
+        ***
+        ****
+        ***** //열의 반복횟수와 행의 반복횟수가 동일하게 
+        */
+       for(let row=0; row<5; row++){
+            for(let col=0; col<=row; col++){
+                document.write("*")
+            }
+            document.write("<br>");
+            }
+
+        /*
+                *
+               ***
+              *****
+             *******
+            *********
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

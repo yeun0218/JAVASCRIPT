@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윈도우 내장 객체</title>
+    <script>
+        /*  주소검색  */
+        //주소 검색 누르면 또 다른 윈도우로 연결되게
+        function fnOpen() {
+            window.open("./resource/zipcode.html","",
+                "left=100, top=100, width=500, height=500");
+            //새로운 창 뜨게만드는 메소드, like target="_blank"
+            //window.open("http://www.google.com","새로운창의 이름(보통생략)", "창의 속성/크기/위치");
+            }
+
+            /*  현재시간 설정  */
+            let timer;//다른 함수에서도 쓰기 위해서 밖에 변수를 선언해줘
+            function fnShowWatch(){
+                let today = new Date();
+                //console.log(today);
+                let msg = `현재시간은 ${today.getHours()}시 ${today.getMinutes()}분 ${today.getSeconds()}초 입니다.`
+                document.f1.watch.value = msg;
+
+                timer = setTimeout(fnShowWatch, 1000); //반복도는 함수가 아니야 
+                //-> 재귀함수 -> 자동으로 반복 돌 수 있게   
+            }
+            
+
+            /* 현재시간 시작/중지  */
+            //반복돌고 있는 타이머를 중지하고 싶을때
+            function fnStop(){//setTimeout 함수를 밖으로 꺼내올 수가 없어서(지역변수이기때문에) 
+                //함수안에서 선언된 변수는 함수 밖에서 쓸 수 없어 
+                clearTimeout(timer);
+                //clearInterval 도 가능 
+            }
+            /* 타이머 반복 함수 */
+            function fnStart(){
+                //setTimeout(fnShowWatch, 1000); 
+                //fnShowWatch();
+                //재귀함수 말고 반복을 도는 타이머함수가 있어 (셋타임아웃은 1회용 한번만 호출)
+                setInterval(fnShowWatch, 1000); //셋인터벌 : ~~~초 마다 함수 실행 -> 자동으로 반복
+                // timer = setInterval(fnShowWatch, 1000); 해주면 중지할때도 인터벌 함수 사용 가능 (재귀함수로 안하고 싶을때)
+            }
+
+            /* location 페이지 이동  */
+            function fnMove(){
+                if(document.f1.chk.checked) //체크가 되어 있을때가 true니까 
+                //if(document.querySelector(.chk).checked) -> class로 접근
+                //체크 되어있는지 확인하는거 : 'checked'
+                location.href = "https://www.naver.com"; //현재 페이지에서 이동 like target="_self"
+                //다시 돌아와서 체크되어있는 거 삭제하려고 해도 다시 네이버로 이동해
+                //무조건 클릭했을때만 이동하지 않게 체크 했을때만 이동했을때
+            }
+
+            /* 이미지 */
+            function fnImgInfo(){
+                const div1 = document.getElementById("info1");
+                const div2 = document.getElementById("info2");
+                //document.images[0] document 안에 images 객체가 있으니까 바로 불러 올 수 있어
+                div1.innerHTML = `첫번째 이미지의 폭 : ${document.images[0].width}px <br>
+                첫번째 이미지의 넓이 : ${document.images[0].height}px`;
+                div2.innerHTML = `두번째 이미지의 폭 : ${document.images[1].width}px <br>
+                두번째 이미지의 넓이 : ${document.images[1].height}px`;
+            }
+
+            /* 이미지 키우기 */
+            function fnImgSize(){
+                document.images[1].width *= 1.5;
+                document.images[1].height *= 1.5;
+            }
+    
+    </script>
+</head>
+<body onload="fnShowWatch();"><!--main, parent 창-->
+<!--<body onload="timer = setInterval(fnShowWatch, 1000);">
+    -> 이렇게 하려면 재귀함수 부분 주석처리 해줘야해-->
+    <form name="f1"><!--child 창-->
+        <input type="button" value="주소 검색" 
+            onclick="fnOpen()"/><br><br>
+        <input type="text" name="addr" size="50"/>
+        <hr/>
+
+        <input type="text" name="watch" size="50" />
+        &nbsp;&nbsp;&nbsp;
+        <input type="button" value="현재시간 시작" onclick="fnStart()"/>
+        <input type="button" value="현재시간 중지" onclick="fnStop()"/>
+        <hr/>
+
+        <label><input type="checkbox" name="chk" class="chk" onclick="fnMove()">네이버로 이동
+        </label>
+      
+        <br/>
+        <input type="button" value="새로 고침" onclick="location.reload();"/>
+        <!--reload : 웹브라우저 상 새로고침 버튼이랑 동일 -->
+        <hr/>
+
+        <table>
+            <tr>
+                <td><img src="./images/duke_box.gif" /></td>
+                <td><img src="./images/hero2.png" /></td>
+            </tr>
+        </table>
+        <input type="button" value="정보 보기" onclick="fnImgInfo()"/>
+        <input type="button" value="이미지 키우기" onclick="fnImgSize()"/>
+        <div id="info1"></div><hr />
+        <div id="info2"></div>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규 문자 표현법</title>
+    <script>
+        const str = `
+            010-1234-5678
+            thesecond@gmail.com
+            Hello world!
+            https://www.omdbapi.com/?apikey=7035c60c&s=frozen
+            The quick brown fox jumps over the lazy dog.
+            hello@naver.com
+            http://localhost:1234
+            동해물과 백두산이 마르고 닳도록
+            abbcccddddeeeee`;
+        
+        /*  생성자 방식 (객체 생성하는 방식)  new (); */
+        //const re = new RegExp('the', ''); 
+        //const re = new RegExp('the', 'g'); 
+        //const re = new RegExp('the', 'gi');
+        //console.log(str.match(re)); //객체.match 사용, 
+        //'the'가 index:39번째에 있는거 하나(플래그를 주지 않아서)input은 찾은 범위
+        
+        /*  리터럴 방식 (객체를 생성하지 않고 바로 값을 넣어서) {키 : 값}  정규표현식으로 찾겠다 앞뒤로//플래그 넣어줘*/
+        //const re = /the/gi;
+        
+        //console.log(str.match(re));
+        //console.log(str.match(/the/gi));
+        //=======================================
+
+        /*  Api  */
+        //const re = /fox/gi;
+
+        // console.log(re.test(str)); //fox라는 문자열과 같은게 있는지 true/false
+        // console.log(str.match(re)); //찾는 데이터를 가져오는 
+        // console.log(str.replace(re,'cat')); //fox라는 단어를 cat으로 바꾸는
+        //=======================================
+
+        /*  Flag  */
+        console.log(str.match(/\.$/g)) //그 줄 맨 끝에 있는 . 을 찾겠다
+        //g는 010~eee 까지를 하나의 문자열로 인식
+        console.log(str.match(/\.$/gm))
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

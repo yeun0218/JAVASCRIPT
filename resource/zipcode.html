@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>집주소 창 만들기</title>
+    <script>
+        function fnAddress(si, gu, gun){
+            let addr = si + "  " + gu + "  " + gu;
+            document.f1.addr.value = addr; //클릭한 주소가 같은 창에 있는 텍스트박스에 떠
+            //form태그로 바로 접근 가능, 이름이 없으면 배열로 "forms[0]"
+
+            //내가 클릭한 주소가 메인창 텍스트박스에 뜨게
+            opener.f1.addr.value = addr;//opener나를 실행시켜준 부모의 창과 연결시켜주는
+
+            //클릭하면 창 닫기
+            window.close();
+        }
+        //a href="#" 은 하이퍼링크 무시하도록
+    </script>
+</head>
+<body>
+    <a href="#" onclick="fnAddress('서울시', '종로구', '효자동')">서울시 종로구 효자동</a><br>
+    <a href="#" onclick="fnAddress('서울시', '강남구', '역삼동')">서울시 강남구 역삼동</a><br>
+    <a href="#" onclick="fnAddress('서울시', '강동구', '천호동')">서울시 강동구 천호동</a><br>
+    <br>
+    <form name="f1"><!--document 안에 form태그가 이미 자식이여서 -->
+        <input type="text" name="addr" />
+    </form>
+</body>
+</html>

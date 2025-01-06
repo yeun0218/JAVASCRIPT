@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom 2 돔 2번</title>
+    <script>
+        function onLoad(){
+            /*    createElement()    */
+            // 태그를 만들어 주는, html은 동적템플릿을 만들 능력이 없어
+            let e_div = document.createElement("div");
+            // div 태그 안에 내용도 넣을 수 있게
+            e_div.textContent = "Hello World"; //textcontent는 꺼내올수도 있고 넣을수도 있어
+            console.log(e_div); //엘리먼트로 만들어서 시작태그와 끝태그로 구성되어 만들어져
+            console.log("------------------");
+
+            /*    prepend(), append()   */
+            //parent를 기준으로 첫번째 자식이나 마지막 자식으로 
+            const parent = document.querySelector(".parent");
+            console.log(parent);
+            //parent.prepend(e_div);//div태그이기 때문에 웹페이지에 나타나 
+            parent.append(e_div); //마지막 자식으로
+            parent.prepend("안녕하세요");
+
+            let comment = new Comment('이것은 주석입니다.'); //new comment: 주석추가
+            parent.prepend(comment);
+            console.log("------------------");
+
+            /*    insertAdjacentElement   */
+            const child1 = document.querySelector(".child");
+            console.log(child1)
+            let e_span1 = document.createElement("span");
+            e_span1.textContent = "오늘은 금요일 룰루";
+            console.log(e_span1);
+            let e_span2 = document.createElement("span");
+            e_span2.textContent = "내일은 주말이다 ~";
+
+            child1.insertAdjacentElement('afterbegin', e_span1);
+            child1.insertAdjacentElement('beforeend', e_span2);
+            console.log("------------------");
+
+            /*    N.insertBefore   */
+            let e_span3 = document.createElement("span");
+            e_span3.textContent = "공부가 끝이 없넹 ㅠ";
+            parent.insertBefore(e_span3, child1); 
+            console.log("------------------");
+
+            /*    N.contains(주어진 노드)    */
+            console.log(parent.contains(child1)); //true, false 두가지 답변만 있어
+            console.log(document.body.contains(parent));
+            console.log(document.body.contains(child1));
+            console.log(parent.contains(parent)); //본인도 포함
+            console.log(parent.contains(document.body));
+            console.log("------------------");
+
+            /*    innerHTML    */
+            //값을 꺼낼때
+            console.log(parent.innerHTML); //하나의 문자열로 꺼내 올 수 있어
+            console.log(parent.innerText); //HTML요소는 제외하고 텍스트 노드만 추출 
+            console.log(parent.textContent); // HTML요소가 적용된 텍스트 추출 
+            //값을 추가할때
+            parent.innerHTML += "<span style= 'color:royalblue'>hello</span>"; //추가이기 때문에 +=로 써줘야해
+            // 쌍따옴표 / 홑따옴표 구분해서 사용 (안끼리 밖끼리 짝 맞춰서) 안이랑 밖이랑 둘다 똑같은거 쓰면 안돼
+            console.log("------------------");
+
+            /*    속성값 처리    */ //태그가 가지고 있는 기능을 보충해주는 
+            console.log(parent.tagName); //엘리먼트에대해서 네임 알아낼때
+            console.log(e_span1.tagName);
+
+            child1.id = "child1";
+            console.log(child1.id); //값을 임시로 저장할때 변수처럼 
+
+            child1.abc = "100"; 
+            console.log(child1.abc);
+
+            console.log(child1.className);
+            child1.className += " child1 active"
+            console.log(child1.className);
+            console.log("------------------");
+
+            /*   E.dataset   */  //전문적으로 데이터를 체계적으로 관리해서 사용하기 위해 
+            let str = "Hello World !!!";
+            let obj = {a:1, b:2}; //객체로 묶은거는 포장이 되어 있는 상태여서 풀어주지 않으면 쓸 수 없어(안의 내용은 알 수 없어)
+            parent.dataset.helloworld = str ; //헬로월드!!!가 페어런트태그에 헬로월드라는 이름으로 저장 
+            parent.dataset.obj = obj ; 
+            parent.dataset.obj= JSON.stringify(obj)//자바스크립트에서 객체를 문자열로객체를 문자열로 바꿔서 표현
+            console.log(parent);
+            console.log(parent.dataset.helloworld);
+            console.log(parent.dataset.obj);
+            console.log(JSON.parse(parent.dataset.obj)); //a 랑 b 라는 값 불러와서 쓸 수 있게 해주는
+            
+        }
+    </script>
+</head>
+<body onload="onLoad()"> <!--정적 템플릿(변하지 않는), 동적 템플릿(없던게 만들어 지는거)-->
+    <div class="parent">이건 부모
+        <div class="child">1</div>
+        <div class="child">2</div>
+    </div>
+</body>
+</html>

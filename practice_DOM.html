@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom 예제 연습</title>
+    <script>
+        function fnLoad() {
+            //모든 스팬태그가 가지고 있는 네임속성의 값을 출력(반복문 사용)
+            //let span = document.getElementsByTagName("span");
+            //console.log(span);
+            //for(let cnt=0; cnt<span.length; cnt++){
+            //    console.log(span[cnt].getAttribute("name"));}
+
+        
+            /*for(let item of span){
+                console.log(item.Name);}
+            console.log(span.item(0).textContent);*/
+            //교수님 정답
+            const spanList = document.getElementsByTagName("span");
+            //console.log(spanList);
+            //console.log(spanList.item(0).getAttribute("name"));
+            for(let i=0; i<spanList.length; i++){
+                let item = spanList.item(i)
+                console.log(`${(i+1)}번째 span name은
+                ${item.getAttribute('name')} 이다.`); 
+            }
+        
+        }
+    </script>
+</head>
+
+<body onload="fnLoad();">
+    <span id="a" name="span1">a입니다</span>
+    <p>
+        <b>진하게</b>test<span id="b" name="span2">b입니다.</span>
+    </p>
+    <div>
+        <p>p입니다</p> <span id="c" name="span3">c입니다.</span>
+    </div>
+</body>
+
+</body>
+
+</html>

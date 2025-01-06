@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hoisting</title>
+    <script >
+        /*hello();//함수가 만들어지기 전에 호출했음으로 함숫값이 뜨면 안되지만
+        //hoisting으로 함수 선언식이  앞으로 가서 함숫값 호출 가능 
+        //함수 선언식만 지원 가능 함수표현식은 안돼 
+        function hello(){
+            console.log("Hello~~");
+        }
+        hello();*/
+
+        /*   표현식   */
+        /*hello1()
+        const hello1 = function(){
+            console.log ("World~~~");
+        }
+        hello1()*/
+
+        console.log(document.getElementById("container")); // 바디보다 헤드가 먼저 진행되기 때문에 null로 떠
+        //defer : external로 불러올때 script 순서를 딜레이시켜주는 -> <script defer> 
+    </script>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>

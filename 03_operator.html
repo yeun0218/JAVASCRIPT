@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>operator</title>
+    <script>
+        /*   산술연산자  : +, -, *, /, %, ++, --  */ //증가연산자, 감소연산자
+        let num = 10;
+        console.log(num);
+        
+        num = num + 1;
+        console.log(num);
+        
+        num = num + 1;
+        console.log(num); //새로 입력할수록 기존값 사라지고 새로 입력한 값으로 
+
+        num ++ ; //후일연산자
+        // num = num + 1; => 1씩 증가시키는 연산식을 간편하게 표현할 수 있는  
+        console.log(num); 
+
+        ++ num  //전일연산자
+        console.log(num); 
+
+        let num1 = ++num; //증가 먼저 넣고 그다음에 변수 작성한 순서대로 입력되기 때문에 순서 주의해서 써야돼
+        console.log(num1);
+
+        num1 = num++; //변수를 먼저 넣고 그다음에 증가
+        console.log(num1);
+        console.log(num);
+
+        //증감연산자는 다른 식과 함께 사용하면 오류가 날 확률이 높기때문에 웬만하면 혼자 사용
+        // % : 나머지 
+
+        console.log("-------------------");
+
+        /*    비교 연산자   : >, <, >=, <=, ==(같다), !==(같지않다), ===(좀더자세하게같은지비교- datatype까지 비교), !==*/
+        num = 10; //숫자열
+        num1 = "10"; //문자열
+        console.log(num == num1); //num이랑 num1이 같냐? 문자열에 숫자를 넣어서 숫자로 인식
+        console.log(num === num1); // 좀 더 정교하게 비교
+        console.log(num != num1); 
+        console.log(num !== num1); // 더 자세하게 같지 않은지 비교할 때
+
+        num = 0;
+        num1 = false; //false를 0으로 사용하기도 해  
+        console.log(num == num1);
+        console.log(num===num1);
+       /* num = 0;
+        num1 = true;//true는 1로 사용
+        console.log(num==num1); */
+        console.log("-------------------");
+
+        /*   논리 연산자 : &&(and), ||(or), !(not)   */
+        // 참인지 거짓인지 판별하기 위해 어떻게 연산되는지
+        let a = true;
+        let b = false;
+
+        console.log(a && b, a || b);
+        console.log(1 && 0, 0 && 1); //숫자값으로 표시하면 결과값도 숫자로 표시 (0이나1로)
+        //0 0
+        console.log(1 && 2, 2 && 1); //0 이외의 모든 숫자는 참
+        //2 1 
+        //0이 없을때 결과값은 오른쪽 숫자=맨 마지막까지 가서 값을 확인하고 결과를 도출해야되기 때문에 맨 오른쪽 값이 나타나 
+        console.log(1 && 2 && 0, 1 && 0 && 2, 7 && 5 && 2 );
+        //0 0 2
+        //단락회로 (전기가 흐르는 길을 끊겠다) : 쓸데없이 전기가 흐르는 것을 막기 위해 -> &&일때)중간에 0이 나오면 끝까지 안가봐도 돼 
+        console.log('A' && 'B' && ''); //문자는 비어있으면 거짓 
+        //  
+
+        console.log(1 || 0, 0 || 1, 1 || 2, 2 || 1); //||연산자는 맨 왼쪽 값으로 (참이 나오면 뒤에거 안봐도 도ㅐ) 
+        // 1 1 1 2
+        console.log(1 || 2 || 0, 1 || 0 || 2, 7 || 5 || 2 )
+        // 1 1 7
+        console.log('A' || 'B' || '')
+        // A 
+
+        console.log(!0, !!0, !!!0);
+        // true false true
+
+        console.log("-------------------");
+
+        /*   할당(치환) 연산자  : =(equal), +=, -=, *=, /= ... */
+
+        //아까 a라는 변수 선언해놨어
+        a = 10; 
+        a = 5;
+        a = 7;
+        console.log(a); //-> 계속 덮어씌우기 때문에 마지막에 남는 7이 결과값
+        // 7
+
+        b = 10;
+        b += 5; // b = b + 5 연산식을 줄여서 쓸 수 있는
+        b += 7; // b = b + 7 
+        console.log(b); 
+        // 22
+
+        console.log("-------------------");
+        console.log((3 + 2) * 2 + 3); //먼저 연산하고 싶은 부분 먼저 괄호로 묶어줘
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

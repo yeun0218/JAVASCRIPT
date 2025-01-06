@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallBack 함수</title>
+    <script>
+        //function a(){ console.log('A')};
+        //const a = () => { console.log('A') };
+        //function b(){ console.log('B')}
+        //const b = () => { console.log('B') };
+        //a();
+        //b();
+
+        /*
+        const a = (param) => { //b함수를 param이라는 매개변수가 받아 
+            console.log('A');
+            param(); //b함수 호출
+        }
+        const b = () => { console.log('B') };
+
+        a(b); 
+        //a라는 함수에 b라는 함수 너 필요할때 써 라고 역할을 넘겨주는 , 
+        a 함수를 호출할때 b함수를 넘겨주는
+        //-> console.log('A') 호출 + b 함수 호출
+        */
+
+        console.log("-------------------") ; 
+
+        /*
+        const sum = (a, b) => a + b ;
+
+        console.log(sum(1, 2));
+        //setTimeout(함수, 시간);//시간이 지난 후에 함수를 호출하는, 호출하려는 함수 이름 알려줘
+        console.log(setTimeout(sum, 1000)); //sum() 괄호를 쓰지 않고 sum만 작성
+        //() 붙이게 되면 지금 바로 호출하겠다
+        */
+
+       /*function ab(){
+        return a+b;
+       }*/ //밖에 따로 함수 만들지말고 무명함수 
+
+       console.log("-------------------") ; 
+
+        //const sum = (a, b) => {
+        //    setTimeout( function(){return a+b} ,1000 );}
+
+        const sum = (a, b) => {
+            setTimeout( () => a+b ,1000 ); //화면에 출력할 수 있는 기능이 있는 함수가 아니야 
+        }
+        console.log(sum(2,3)); 
+
+
+        const hap = (a, b, c) => { //마지막 변수 c는 함수를 받을 매개변수
+            setTimeout( c(a+b),3000 );   //함수에 ()가 되어 있어서 바로 호출되기때문에 지연시간 적용 안돼  
+        }
+        hap(2, 3, (val)=>{console.log(val)}); //val 로 만들어진 함수의 주소를 c에 넘겨줘 
+        console.log("-------------------") ; 
+
+ 
+        /*
+        function plus (...rest) {
+            //console.log(rest); 
+            let hap =0;
+            //for (let cnt =0; cnt < rest.length; cnt++){
+            //   hap += rest[cnt];}
+
+            for(let num of rest) //코드리팩토링 ( 더 간결하고 깔끔하게 만드는)
+                hap += num
+
+            console.log(hap);          
+        }
+            */
+    
+
+        // reduce(함수, 초기값); 함수값의 누적 구해주는 함수 (인자값으로 함수가 들어가 )
+        // 배열 데이터일때에만 사용 가능한 함수 
+        function plus(...rest){
+            console.log(rest.reduce((acc,cur)=>acc+cur,0));
+            //(매개변수1, 매개변수2) => 매개변수1 누적하고 싶은 연산기호 매개변수2
+            // 매개변수1 : 전 단계까지 누적 결과 
+            // 매개변수2 : 추가하려는 현재의 데이터
+            // acc=0+1(cur), acc=1(acc)+2(cur), acc=3(acc)+4(cur) ...
+            
+        }
+
+        plus(1, 2);
+        plus(1, 2, 3, 4);
+        plus(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

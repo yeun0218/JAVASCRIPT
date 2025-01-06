@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event 이벤트 1</title>
+    <script>
+        function fnOut(){
+            document.querySelector("input").style.backgroundColor = 'yellow';
+        }
+        //계속 스타일 주고 싶을 때는 
+        //const style = document.querySelector("input").style 변수로 지정하고 뒤에 스타일 주고싶은 부분 . 으로 계속이어가
+    //어디에서 어떤사건이 발생하고 어떻게 처리할지
+    </script>
+</head>
+<body>
+    <!--이벤트 소스 : button
+    이벤트 클래스  : onmouseover, onmouseout-->
+    <input type ="button" value="나는 버튼이다"  
+        onmouseover= "this.style.backgroundColor= 'red';" 
+        onmouseout="fnOut()"/>
+        <!--this => button 현재 실행 중인 객체, 같은 위치에 있을때만 사용가능
+        자바스크립트에서 css요소 쓸 수 있는거 : .style
+        자바스크립코드에서 백그라운드컬러는 = ''; -->
+        <!--태그 안에 직접 처리 inline방식-->
+</body>
+</html>

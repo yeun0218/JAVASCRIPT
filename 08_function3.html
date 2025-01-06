@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function 함수 3</title>
+    <script>
+        /*   함수 선언식   */
+        function hello(a, b){
+            return a + b;
+        }
+        console.log(hello(2, 3));
+
+        /*   함수 표현식   */
+        const hello2 = function(a, b){
+            return(a + b);}
+        console.log(hello2(3, 4))
+
+        //console.log(function(a, b){
+        //    return(a + b);})
+
+        /*   화살표 함수  */
+        console.log((a, b) => {return a + b; })
+        //const hello3 = (a, b) => { return a + b;};
+        const hello3 = (a, b) =>  a + b; //return이란 {} 중괄호 모두 빼야해
+        console.log(hello(5,6));
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

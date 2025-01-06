@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 테스트</title>
+    <!--<script src="./jquery-3.7.1.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" 
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        /*
+        window.onload = function() {
+            const myElement = document.getElementById("id01");
+            document.getElementById("demo").innerHTML = 
+            "The text from the id01 paragraph is: " +
+            myElement.innerHTML;
+        }
+        */
+
+        /* jQuery 버전  jQuery => $ */
+        jQuery(document).ready(function () {
+            //alert("jQuery가 잘 실행중인가?") //(.js파일 다운로드 받으면 실행 가능)
+            const myElement = $("#id01");
+            $("#demo").text("The text from the id01 paragraph is: " +
+                myElement[0].innerHTML);
+        })
+    </script>
+</head>
+
+<body>
+    <h2>Finding HTML Element by Id</h2>
+    <p id="id01">Hello World!!</p>
+    <p id="id02">Hello Korea!!</p>
+    <p id="id03">Hello France!!</p>
+
+    <p id="demo"></p>
+</body>
+
+</html>

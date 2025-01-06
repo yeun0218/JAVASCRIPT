@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스_함수</title>
+    <script>
+        const Book = function(title, author) { 
+            this.title = title;
+            this.author = author;      
+        }
+
+        let b1 = new Book("노인과 바다", "헤밍웨이"); //처음생성할때 입력한 값 : 초기값
+        console.log(b1.title, b1.author);
+        
+        let b2 = new Book("홍길동전", "허균");
+        console.log(b2.title, b2.author);
+
+        //Book이라는 클래스 안에 setValue 라는 메서드(함수) 만들어/ title(변수), author(변수) 
+        //초기값을 바꾸기 우ㅣ해 
+        //함수를 추가할때에는  prototype 사용 
+        Book.prototype.setValue = function(title, author) {
+            this.title = title;
+            this.author = author;
+        }
+
+        b1.setValue("노인과 강", "헤밍코드")
+        console.log(b1.title, b1.author);
+
+        Book.prototype.getValue = function() {
+            console.log(this.title + " 과 " + this.author);
+        }
+        b1.getValue();
+
+        //const fruits = ['Apple', 'Banana', 'Cherry'];
+        const fruits = new Array('Apple', 'Banana', 'Cherry');
+
+        //console.log(fruits);
+        //array 함수에서 쓸 수 있는 메서드 함께 볼 수 있어
+        Array.prototype.dpdmsdl52 = function () {
+            console.log("내가 만든 메서드");
+        }
+
+        console.log(fruits);
+        fruits.dpdmsdl52();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
